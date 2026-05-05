@@ -24,8 +24,6 @@ export const consumeMessages = async (topic: string) => {
       await prisma.chats.create({
         data: data,
       });
-
-      // Process the message (e.g., save to DB, trigger some action, etc.)
     },
   });
 };

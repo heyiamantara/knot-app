@@ -36,7 +36,6 @@ instrument(io, {
 export { io };
 setupSocket(io);
 
-// * Middleware
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -45,14 +44,12 @@ app.get("/", (req: Request, res: Response) => {
   return res.send("It's working Guys 🙌");
 });
 
-// * Add Kafka Producer
 connectKafkaProducer().catch((err) => console.log("Kafka Consumer error", err));
 
 consumeMessages(process.env.KAFKA_TOPIC!).catch((err) =>
   console.log("The Kafka Consume error", err)
 );
 
-// * Routes
 app.use("/api", Routes);
 
 server.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));

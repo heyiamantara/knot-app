@@ -1,47 +1,42 @@
 import React from "react";
 
+const features = [
+  {
+    color: "bg-black",
+    title: "Google OAuth Security",
+    desc: "Standardized, frictionless authentication. Gain instant, secure access to the platform without managing another set of credentials.",
+  },
+  {
+    color: "bg-black",
+    title: "Protected Chat Rooms",
+    desc: "Create dedicated channels with optional cryptographic passcodes, ensuring only authorized personnel can enter your communication space.",
+  },
+  {
+    color: "bg-neo-secondary",
+    title: "Real-Time Connectivity",
+    desc: "Powered by Socket.io, experience instantaneous bidirectional data flow. See messages the exact millisecond they are transmitted.",
+  },
+  {
+    color: "bg-neo-secondary",
+    title: "Persistent Storage",
+    desc: "A robust Postgres database backend guarantees that your entire conversation history is permanently archived and instantly retrievable.",
+  },
+];
+
 export default function FeatureSection() {
   return (
-    <section id="features" className="py-unit_2xl px-8 md:px-16 bg-white border-y-4 border-black relative overflow-hidden">
-      <div className="absolute right-0 top-0 w-1/2 h-full bg-surface-bright -z-10 border-l-4 border-black hidden md:block"></div>
-      <div className="grid grid-cols-12 gap-gutter">
-        <div className="col-span-12 md:col-span-6 md:pr-8">
-          <h2 className="font-mono-label text-mono-label uppercase text-on-surface-variant mb-unit_xl">SYSTEM_FEATURES</h2>
-          <div className="space-y-16">
-            <div>
-              <div className="w-8 h-8 bg-black mb-6"></div>
-              <h3 className="font-headline-md text-headline-md mb-4 uppercase">Google OAuth Security</h3>
-              <p className="font-body-lg text-body-lg text-on-surface-variant">
-                Standardized, frictionless authentication. Gain instant, secure access to the platform without managing another set of credentials.
-              </p>
-            </div>
-            <div>
-              <div className="w-8 h-8 bg-black mb-6"></div>
-              <h3 className="font-headline-md text-headline-md mb-4 uppercase">Protected Chat Rooms</h3>
-              <p className="font-body-lg text-body-lg text-on-surface-variant">
-                Create dedicated channels with optional cryptographic passcodes, ensuring only authorized personnel can enter your communication space.
-              </p>
-            </div>
+    <section id="features" className="py-12 sm:py-unit_2xl px-6 sm:px-8 md:px-16 bg-white border-y-4 border-black">
+      <h2 className="font-mono-label text-[10px] sm:text-mono-label uppercase text-on-surface-variant mb-8 sm:mb-unit_xl">
+        SYSTEM_FEATURES
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
+        {features.map((f) => (
+          <div key={f.title} className="border-t-2 border-black/10 pt-6">
+            <div className={`w-6 h-6 sm:w-8 sm:h-8 ${f.color} mb-4`}></div>
+            <h3 className="font-headline-md text-base sm:text-headline-md mb-3 uppercase">{f.title}</h3>
+            <p className="font-body-lg text-sm sm:text-body-lg text-on-surface-variant">{f.desc}</p>
           </div>
-        </div>
-        <div className="col-span-12 md:col-span-6 md:pl-16 pt-16 md:pt-0">
-          <div className="space-y-16 mt-unit_xl md:mt-32">
-            <div>
-              <div className="w-8 h-8 bg-neo-secondary mb-6"></div>
-              <h3 className="font-headline-md text-headline-md mb-4 uppercase">Real-Time Connectivity</h3>
-              <p className="font-body-lg text-body-lg text-on-surface-variant">
-                Powered by Socket.io, experience instantaneous bidirectional data flow. See messages the exact millisecond they are transmitted.
-              </p>
-            </div>
-            <div>
-              <div className="w-8 h-8 bg-neo-secondary mb-6"></div>
-              <h3 className="font-headline-md text-headline-md mb-4 uppercase">Persistent Storage</h3>
-              <p className="font-body-lg text-body-lg text-on-surface-variant">
-                A robust Postgres database backend guarantees that your entire conversation history is permanently archived and instantly retrievable.
-              </p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

@@ -27,7 +27,6 @@ export default function Chats({
   }, []);
   useEffect(() => {
     socket.on("message", (data: MessageType) => {
-      console.log("The message is", data);
       setMessages((prevMessages) => [...prevMessages, data]);
       scrollToBottom();
     });
@@ -39,7 +38,6 @@ export default function Chats({
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Resolve name from chatUser state or fall back to localStorage
     const resolvedName = (() => {
       if (chatUser?.name) return chatUser.name;
       try {
@@ -62,17 +60,17 @@ export default function Chats({
   };
 
   return (
-    <div className="flex flex-col flex-1 p-4 md:p-8 bg-white overflow-hidden">
+    <div className="flex flex-col flex-1 p-3 sm:p-4 md:p-8 bg-white overflow-hidden">
       <div className="flex-1 overflow-y-auto flex flex-col-reverse pr-2 pb-4">
         <div ref={messagesEndRef} />
         <div className="flex flex-col gap-4">
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`max-w-md p-4 border-standard border-black flex flex-col gap-2 rounded-none shadow-none ${
+              className={`max-w-[85%] sm:max-w-md p-3 sm:p-4 border-standard border-black flex flex-col gap-2 rounded-none shadow-none ${
                 message.name === chatUser?.name
-                  ? "bg-black text-white self-end ml-12"
-                  : "bg-surface-bright text-black self-start mr-12"
+                  ? "bg-black text-white self-end ml-4 sm:ml-12"
+                  : "bg-surface-bright text-black self-start mr-4 sm:mr-12"
               }`}
             >
               <span className="font-mono-label text-[10px] uppercase opacity-70 border-b border-current pb-1 mb-1">{message.name}</span>

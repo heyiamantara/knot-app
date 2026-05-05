@@ -4,6 +4,7 @@ import { produceMessage } from "./helper.js";
 interface CustomSocket extends Socket {
   room?: string;
 }
+
 export function setupSocket(io: Server) {
   io.use((socket: CustomSocket, next) => {
     const room = socket.handshake.auth.room || socket.handshake.headers.room;
@@ -15,7 +16,6 @@ export function setupSocket(io: Server) {
   });
 
   io.on("connection", (socket: CustomSocket) => {
-    // * Join the room
     socket.join(socket.room);
 
     socket.on("message", async (data) => {

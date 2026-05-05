@@ -63,9 +63,9 @@ export default function CreateChat({ user }: { user: CustomUser }) {
           CREATE THREAD
         </button>
       </DialogTrigger>
-      <DialogContent className="border-heavy bg-white rounded-none p-8" onInteractOutside={(e) => e.preventDefault()}>
+      <DialogContent className="border-heavy bg-white rounded-none p-5 sm:p-8" onInteractOutside={(e) => e.preventDefault()}>
         <DialogHeader>
-          <DialogTitle className="font-display-lg text-4xl uppercase mb-4">NEW THREAD</DialogTitle>
+          <DialogTitle className="font-display-lg text-2xl sm:text-4xl uppercase mb-4">NEW THREAD</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mt-4">

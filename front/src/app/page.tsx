@@ -16,10 +16,10 @@ export default async function LandingPage() {
       <Navbar user={session?.user || null} />
       
       <main className="flex-1">
-        <HeroSection />
+        <HeroSection user={session?.user || null} />
         <HowItWorks />
         <FeatureSection />
-        <CTABanner />
+        <CTABanner user={session?.user || null} />
       </main>
       
       <Footer />

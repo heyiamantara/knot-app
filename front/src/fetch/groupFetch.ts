@@ -12,7 +12,6 @@ export async function fetchChatGroups(token: string) {
   });
 
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
   const response = await res.json();
@@ -43,7 +42,6 @@ export async function fetchChatGroupUsers(id: string) {
   });
 
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
   const response = await res.json();

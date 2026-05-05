@@ -11,8 +11,8 @@ export default function DashNav({
   name: string;
 }) {
   return (
-    <nav className="sticky top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 h-24 bg-white border-b-4 border-black">
-      <h1 className="text-3xl font-black tracking-tighter text-black uppercase font-display-lg">
+    <nav className="sticky top-0 w-full z-50 flex justify-between items-center px-6 sm:px-8 md:px-16 h-16 sm:h-24 bg-white border-b-4 border-black">
+      <h1 className="text-xl sm:text-3xl font-black tracking-tighter text-black uppercase font-display-lg">
         <Link href="/">DASHBOARD</Link>
       </h1>
       <div className="flex items-center space-x-2 md:space-x-6 text-gray-700">

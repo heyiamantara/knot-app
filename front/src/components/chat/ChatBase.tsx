@@ -36,38 +36,32 @@ export default function ChatBase({
   };
 
   const handleJoined = () => {
-    // Reload chatUser from localStorage (updated by dialog on join)
     const data = localStorage.getItem(group.id);
     if (data) setChatUser(JSON.parse(data));
-    // Refresh users list
     fetchUsers();
   };
 
   return (
     <div className="flex flex-col bg-neo-background h-screen">
-      {/* Unified full-width header bar */}
-      <div className="flex h-24 bg-white shrink-0">
-        {/* USERS label — border-b only under this column */}
+      <div className="flex h-16 sm:h-24 bg-white shrink-0">
         <div className="hidden md:flex items-center w-1/5 border-r-4 border-b-4 border-black px-6">
           <h1 className="font-headline-md text-2xl uppercase">USERS</h1>
         </div>
-        {/* Room title + user info — no bottom border */}
-        <div className="flex flex-1 items-center justify-between px-8 border-b-4 border-black">
-          <div className="flex items-center space-x-4">
+        <div className="flex flex-1 items-center justify-between px-4 sm:px-8 border-b-4 border-black">
+          <div className="flex items-center space-x-3">
             <div className="md:hidden">
               <ChatNav chatGroup={group} users={users} user={chatUser} mobileOnly />
             </div>
-            <h1 className="text-3xl font-black tracking-tighter text-black uppercase font-display-lg">
+            <h1 className="text-lg sm:text-3xl font-black tracking-tighter text-black uppercase font-display-lg truncate max-w-[180px] sm:max-w-none">
               {group.title}
             </h1>
           </div>
-          <p className="font-mono-label text-mono-label uppercase text-on-surface-variant hidden md:block">
+          <p className="font-mono-label text-[10px] sm:text-mono-label uppercase text-on-surface-variant hidden md:block">
             USER: {chatUser?.name ?? "—"}
           </p>
         </div>
       </div>
 
-      {/* Body */}
       <div className="flex flex-1 overflow-hidden">
         <ChatSidebar users={users} />
         <div className="w-full md:w-4/5 bg-white flex flex-col h-full overflow-hidden">

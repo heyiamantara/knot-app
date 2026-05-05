@@ -33,7 +33,6 @@ export default function ChatUserDialog({
   const ROOM_KEY = params["id"] as string;
 
   useEffect(() => {
-    // Tab already validated this session → skip dialog
     const tabFlag = sessionStorage.getItem(TAB_FLAG);
     if (tabFlag) { setOpen(false); return; }
   }, []);
@@ -52,14 +51,11 @@ export default function ChatUserDialog({
     }
 
     try {
-      // Always register — each new tab/session is a distinct user entry
       const { data } = await axios.post(CHAT_GROUP_USERS, {
         name: state.name,
         group_id: ROOM_KEY,
       });
-      // Persist THIS user's identity for the current browser
       localStorage.setItem(ROOM_KEY, JSON.stringify(data?.data));
-      // Mark this tab as validated so refresh/navigate-back won't re-prompt
       sessionStorage.setItem(TAB_FLAG, "1");
       setOpen(false);
       onJoined?.();
@@ -70,9 +66,9 @@ export default function ChatUserDialog({
 
   return (
     <Dialog open={open}>
-      <DialogContent className="border-heavy bg-white rounded-none p-8" onInteractOutside={(e) => e.preventDefault()}>
+      <DialogContent className="border-heavy bg-white rounded-none p-5 sm:p-8" onInteractOutside={(e) => e.preventDefault()}>
         <DialogHeader>
-          <DialogTitle className="font-display-lg text-4xl uppercase mb-2">ACCESS REQUIRED</DialogTitle>
+          <DialogTitle className="font-display-lg text-2xl sm:text-4xl uppercase mb-2">ACCESS REQUIRED</DialogTitle>
           <DialogDescription className="font-body-md text-on-surface-variant uppercase">
             ADD YOUR NAME AND PASSCODE TO JOIN THE THREAD
           </DialogDescription>
